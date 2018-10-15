@@ -1,0 +1,22 @@
+{
+  "name": "auto-poster",
+  "version": "1.0.0",
+  "description": "自身のプロフィールなど同一内容を複数のウェブサイトへへの自動投稿システムです。",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "phinesze",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "ssh://ec2-user@phinesze.work/home/ec2-user/git/auto-poster"
+  },
+  "keywords": [
+    "keyword?"
+  ]
+}
