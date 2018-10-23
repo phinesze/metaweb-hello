@@ -9,7 +9,6 @@
   "author": "phinesze",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
   },
   "devDependencies": {},
   "repository": {
