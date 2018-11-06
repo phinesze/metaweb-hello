@@ -1,0 +1,6 @@
+.header {
+    margin-bottom: 2rem;
+    height: 3rem;
+    background-color: var(--main-color);
+    color: #ffffff;
+}

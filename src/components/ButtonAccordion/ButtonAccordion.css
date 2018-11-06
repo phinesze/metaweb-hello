@@ -1,0 +1,8 @@
+.accordion {
+    margin: 1rem;
+}
+
+.field {
+    border: 4px solid var(--main-color);
+    border-radius: 1rem;
+}
