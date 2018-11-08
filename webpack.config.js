@@ -1,6 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+    mode: "development",
+    devtool: "source-map",
     module: {
         rules: [
             {

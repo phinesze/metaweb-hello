@@ -1,7 +1,7 @@
 import React from "react"
 import style from "./MainButton.css"
 
-export default class SubmitButton extends React.Component {
+export default class MainButton extends React.Component {
 
     constructor(props) {
         super(props);
@@ -10,7 +10,7 @@ export default class SubmitButton extends React.Component {
     }
 
     render() {
-        return <button type={this.props.type} className={style.button}>
+        return <button type={this.props.type} className={style.button} onClick={this.props.onClick}>
             {this.props.text}
         </button>;
     }

@@ -11,6 +11,10 @@ const Index = () => {
         <Header/>
 
         <section className={style.content}>
+            <ButtonAccordion text="dropboxへログイン">
+                ※dropboxログイン機能ボタンを表示
+            </ButtonAccordion>
+
             <ButtonAccordion text="NGワードを設定する">
                 ※dropboxログイン機能ボタンを表示
             </ButtonAccordion>
@@ -27,4 +31,4 @@ const Index = () => {
     </div>;
 };
 
-ReactDOM.render(<Index/>, document.getElementById('index'));
+ReactDOM.render(<Index/>, document.getElementById('root'));
