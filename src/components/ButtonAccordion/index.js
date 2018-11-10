@@ -1,6 +1,7 @@
 import React from "react"
 import style from "./ButtonAccordion.css"
 import MainButton from "../MainButton"
+import {CSSTransition} from "react-transition-group"
 
 export default class ButtonAccordion extends React.Component {
 
@@ -10,6 +11,17 @@ export default class ButtonAccordion extends React.Component {
         this.state = {
             isExpanded: false
         }
+
+        this.classNames= {
+            appear: 'my-appear',
+            appearActive: 'my-active-appear',
+            enter: style.fieldAreaEnter,
+            enterActive: style.contentAreaEnterActive,
+            enterDone: style.contentAreaEnterDone,
+            exit: style.fieldAreaExit,
+            exitActive: style.contentAreaExitActive,
+            exitDone: style.contentAreaExitDone
+        };
     }
 
     toggle(e) {
@@ -18,16 +30,23 @@ export default class ButtonAccordion extends React.Component {
         });
     }
 
+
     render() {
+
         return <div className={style.accordion}>
 
             <MainButton type="button" text={this.props.text} onClick={e => this.toggle(e)}/>
-            <fieldset ref={this.fieldRef} className={style.fieldArea} data-is-expanded={this.state.isExpanded}>
-                <div className={style.innerField}>
-                {this.props.children}
+
+            <CSSTransition in={this.state.isExpanded} timeout={800} unmountOnExit classNames={this.classNames} onEntered={e => e = e} onExited={ e => e = e}>
+
+                <div className={style.contentArea}>
+                    <div className={style.contentFrame}/>
+                    <div className={style.innerContent}>
+                        {this.props.children}
+                    </div>
                 </div>
-            </fieldset>
+
+            </CSSTransition>
         </div>;
     }
-
 }

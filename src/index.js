@@ -9,23 +9,28 @@ const Index = () => {
     return <div className={style.react_top}>
 
         <Header/>
+        <div>
+            <section className={style.content}>
+                <ButtonAccordion text="dropboxへログイン">
+                    <p>※dropboxログイン機能を表示</p>
+                </ButtonAccordion>
 
-        <section className={style.content}>
-            <ButtonAccordion text="dropboxへログイン">
-                ※dropboxログイン機能ボタンを表示
-            </ButtonAccordion>
+                <ButtonAccordion text="NGワードを設定する">
+                    <p>※NGワード設定機能を表示</p>
+                    <form>
+                        <div>
+                            <input type="text"/><input type="radio"/>
+                        </div>
+                    </form>
+                </ButtonAccordion>
 
-            <ButtonAccordion text="NGワードを設定する">
-                ※dropboxログイン機能ボタンを表示
-            </ButtonAccordion>
-
-            <ButtonAccordion text="フィルターされたWebページを表示する">
-                <form>
-                    <label>URL</label><input type="text"/>
-                </form>
-            </ButtonAccordion>
-        </section>
-
+                <ButtonAccordion text="フィルターされたWebページを表示する">
+                    <form>
+                        <label>URL</label><input type="text"/>
+                    </form>
+                </ButtonAccordion>
+            </section>
+        </div>
         <Footer/>
 
     </div>;

@@ -10,9 +10,9 @@ export default class Footer extends React.Component {
     }
 
     render() {
-        return <header className={style.footer}>
+        return <footer className={style.footer}>
             <div>AutoPoster</div>
-        </header>;
+        </footer>;
     }
 
 }
