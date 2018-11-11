@@ -2,22 +2,28 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./components/Header"
 import Footer from "./components/Footer"
-import style from "./index.css"
-import ButtonAccordion from "./components/ButtonAccordion/App";
+import style from "./App.css"
+import ButtonAccordion from "./components/ButtonAccordion";
 
-const a = () => {
-    return {hour: 10, minute: 10, second: 10};
-}
-
-class App extends React.Component {
+export default class App extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {
+            year: 0,
+            month: 0,
+            day: 0,
+            hour: 0,
+            minute: 0,
+            second: 0
+        }
     }
 
     render() {
+
+        const {year, month, day} = this.state;
+
         return <div className={style.react_top}>
 
             <Header/>
@@ -25,6 +31,7 @@ class App extends React.Component {
                 <section className={style.content}>
 
                     <ButtonAccordion text="日付を表示">
+                        {this.state}
                     </ButtonAccordion>
 
                     <ButtonAccordion text="現在時刻を表示">
@@ -37,5 +44,3 @@ class App extends React.Component {
         </div>;
     }
 }
-
-ReactDOM.render(<App/>, document.getElementById('root'));
