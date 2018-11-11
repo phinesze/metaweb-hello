@@ -35,7 +35,7 @@ export default class ButtonAccordion extends React.Component {
 
         return <div className={style.accordion}>
 
-            <MainButton type="button" text={this.props.text} onClick={e => this.toggle(e)}/>
+            <MainButton type="button" text={this.props.text} onClick={e => {this.toggle(e); this.props.onClick(e)}}/>
 
             <CSSTransition in={this.state.isExpanded} timeout={600} unmountOnExit classNames={this.classNames} onEntered={e => e = e} onExited={ e => e = e}>
 

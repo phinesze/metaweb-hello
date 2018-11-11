@@ -16,13 +16,30 @@ export default class App extends React.Component {
             day: 0,
             hour: 0,
             minute: 0,
-            second: 0
-        }
+            second: 0,
+        };
     }
+
+    clicked1() {
+        this.setState({
+            year: 2222,
+            month: 2,
+            day: 2,
+        });
+    }
+
+    clicked2() {
+        this.setState({
+            hour: 2,
+            minute: 2,
+            second: 2,
+        });
+    }
+
 
     render() {
 
-        const {year, month, day} = this.state;
+        const {year, month, day, hour, minute, second} = this.state;
 
         return <div className={style.react_top}>
 
@@ -30,11 +47,12 @@ export default class App extends React.Component {
             <div>
                 <section className={style.content}>
 
-                    <ButtonAccordion text="日付を表示">
-                        {this.state}
+                    <ButtonAccordion text="日付を表示" onClick={e => this.clicked1(e)}>
+                        {year}年{month}月{day}日
                     </ButtonAccordion>
 
-                    <ButtonAccordion text="現在時刻を表示">
+                    <ButtonAccordion text="現在時刻を表示" onClick={e => this.clicked2(e)}>
+                        {hour}時{minute}分{second}秒
                     </ButtonAccordion>
 
                 </section>
