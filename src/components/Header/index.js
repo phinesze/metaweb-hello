@@ -11,7 +11,7 @@ export default class Header extends React.Component {
 
     render() {
         return <header className={style.header}>
-            <div>WebページNGツール184</div>
+            <div>MetaWebDropboxSample</div>
         </header>;
     }
 

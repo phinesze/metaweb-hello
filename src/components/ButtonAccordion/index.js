@@ -37,7 +37,7 @@ export default class ButtonAccordion extends React.Component {
 
             <MainButton type="button" text={this.props.text} onClick={e => this.toggle(e)}/>
 
-            <CSSTransition in={this.state.isExpanded} timeout={800} unmountOnExit classNames={this.classNames} onEntered={e => e = e} onExited={ e => e = e}>
+            <CSSTransition in={this.state.isExpanded} timeout={600} unmountOnExit classNames={this.classNames} onEntered={e => e = e} onExited={ e => e = e}>
 
                 <div className={style.contentArea}>
                     <div className={style.contentFrame}/>

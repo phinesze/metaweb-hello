@@ -2,7 +2,7 @@
     //margin: 1rem;
     padding: 0.5rem 0;
 
-    --duration: 800ms;
+    --duration: 600ms;
     --function: ease;
     --animation-enter: var(--duration) var(--function) 0ms 1 normal forwards;
     --animation-exit: var(--duration) var(--function) 0ms 1 reverse forwards;
