@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('path/', views.hello),
-    path('json/', views.json),
+    path('date/', views.date),
+    path('time/', views.time)
 ]

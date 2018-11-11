@@ -1,15 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import style from "./App.css"
 import ButtonAccordion from "./components/ButtonAccordion";
+import {SERVER_HOME} from "./Constants"
 
 export default class App extends React.Component {
 
     constructor(props) {
         super(props);
-
+        this.serverHome = SERVER_HOME
         this.state = {
             year: 0,
             month: 0,
@@ -20,20 +20,28 @@ export default class App extends React.Component {
         };
     }
 
-    clicked1() {
-        this.setState({
-            year: 2222,
-            month: 2,
-            day: 2,
-        });
+    handleClickDisplayDate() {
+        const app = this
+
+        fetch(this.serverHome + "/sample/date/", {mode: "cors"})
+            .then(function(response) {return response.json();})
+            .then(json => app.setState({
+                year: json.year,
+                month: json.month,
+                day: json.day,
+            }));
     }
 
-    clicked2() {
-        this.setState({
-            hour: 2,
-            minute: 2,
-            second: 2,
-        });
+    handleClickDisplayTime() {
+        const app = this;
+
+        fetch(this.serverHome + "/sample/time/", {mode: "cors"})
+            .then(function(response) {return response.json();})
+            .then(json => app.setState({
+                hour: json.hour,
+                minute: json.minute,
+                second: json.second,
+            }));
     }
 
 
@@ -47,11 +55,11 @@ export default class App extends React.Component {
             <div>
                 <section className={style.content}>
 
-                    <ButtonAccordion text="日付を表示" onClick={e => this.clicked1(e)}>
+                    <ButtonAccordion text="日付を表示" onClick={e => this.handleClickDisplayDate(e)}>
                         {year}年{month}月{day}日
                     </ButtonAccordion>
 
-                    <ButtonAccordion text="現在時刻を表示" onClick={e => this.clicked2(e)}>
+                    <ButtonAccordion text="現在時刻を表示" onClick={e => this.handleClickDisplayTime(e)}>
                         {hour}時{minute}分{second}秒
                     </ButtonAccordion>
 
