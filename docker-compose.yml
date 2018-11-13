@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    build:
+      context: docker/web/.
+    tty: true
+    depends_on:
+      - mysql
+    ports:
+    - 80:80
+    volumes:
+    - ./www:/var/www:cached
+
+  mysql:
+    restart: always
+    image: mysql:latest
+    volumes:
+    - ./mysql:/var/lib/mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=pass_word
+    - MYSQL_DATABASE=metaweb
+    ports:
+    - 3306:3306
