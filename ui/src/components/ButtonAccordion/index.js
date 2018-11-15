@@ -1,6 +1,6 @@
 import React from "react"
 import style from "./ButtonAccordion.css"
-import MainButton from "../MainButton"
+import MainButton from "../MainButton/index"
 import {CSSTransition} from "react-transition-group"
 
 export default class ButtonAccordion extends React.Component {

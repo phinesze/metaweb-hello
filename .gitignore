@@ -1,8 +1,8 @@
 #webpack出力先
-dist/
+ui/dist/
 
 #workspace.xml
 .idea/workspace.xml
 
 #nodeパッケージ
-node_modules/
+ui/node_modules/

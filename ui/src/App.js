@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./components/Header"
-import Footer from "./components/Footer"
+import Header from "./components/Header/index"
+import Footer from "./components/Footer/index"
 import style from "./App.css"
-import ButtonAccordion from "./components/ButtonAccordion";
+import ButtonAccordion from "./components/ButtonAccordion/index";
 import {SERVER_HOME} from "./Constants"
 
 export default class App extends React.Component {

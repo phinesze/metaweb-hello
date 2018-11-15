@@ -2,11 +2,13 @@
   "name": "auto-poster",
   "version": "1.0.0",
   "description": "説明",
-  "main": "script.js",
+  "main": "../script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development & cd api && python3 manage.py runserver",
-    "build": "webpack --mode production"
+    "start": "webpack-dev-server --mode development & cd ../api && python3 manage.py runserver",
+    "startapi": "cd ../api && python3 manage.py runserver",
+    "build": "webpack --mode production",
+    "docker-compose": "docker-compose up -d --build"
   },
   "author": "phinesze",
   "license": "ISC",

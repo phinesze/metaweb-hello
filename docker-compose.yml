@@ -1,16 +1,18 @@
 version: '3'
 services:
-  web:
+  ui:
     build:
-      context: docker/web/.
+      context: ui/.
     tty: true
-    depends_on:
-      - mysql
     ports:
     - 80:80
-    volumes:
-    - ./www:/var/www:cached
-
+  api:
+    build:
+      context: api/.
+    depends_on:
+    - mysql
+    ports:
+    - 8000:8000
   mysql:
     restart: always
     image: mysql:latest
