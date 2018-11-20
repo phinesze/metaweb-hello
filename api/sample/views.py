@@ -20,6 +20,8 @@ def date(request):
         'day': now.day
     })
 
+    return response
+
 def time(request):
     """
     現在の時刻をjsonで返却する。
