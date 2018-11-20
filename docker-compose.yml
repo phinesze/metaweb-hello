@@ -4,16 +4,20 @@ services:
     build:
       context: ui/.
     tty: true
+    volumes:
+      - ./ui/dist:/var/www/html
+      - ./ui/nginx/conf.d:/etc/nginx/conf.d
     ports:
     - 80:80
   api:
-    build:
-      context: api/.
+    build: api/.
     depends_on:
-    - mysql
+    - db
+    volumes:
+    - ./api:/code
     ports:
     - 8000:8000
-  mysql:
+  db:
     restart: always
     image: mysql:latest
     volumes:
