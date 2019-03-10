@@ -10,9 +10,9 @@ export default class ButtonAccordion extends React.Component {
 
         this.state = {
             isExpanded: false
-        }
+        };
 
-        this.classNames= {
+        this.classNames = {
             appear: 'my-appear',
             appearActive: 'my-active-appear',
             enter: style.fieldAreaEnter,
@@ -22,12 +22,25 @@ export default class ButtonAccordion extends React.Component {
             exitActive: style.contentAreaExitActive,
             exitDone: style.contentAreaExitDone
         };
+
+        this.interval = null;
     }
 
     toggle(e) {
         this.setState({
             isExpanded: !this.state.isExpanded
         });
+
+        if (!this.state.isExpanded && this.props.onOpening) {
+            this.props.onOpening(e);
+
+            this.interval = window.setInterval(() => {
+                this.props.onOpening(e);
+            }, 1000);
+        } else if ((this.state.isExpanded && this.interval)) {
+            window.clearInterval(this.interval);
+            this.interval = null;
+        }
     }
 
 
@@ -35,9 +48,15 @@ export default class ButtonAccordion extends React.Component {
 
         return <div className={style.accordion}>
 
-            <MainButton type="button" text={this.props.text} onClick={e => {this.toggle(e); this.props.onClick(e)}}/>
+            <MainButton type="button" text={this.props.text} onClick={e => {
+                this.toggle(e);
+                if ((this.props.onClick)) {
+                    this.props.onClick(e);
+                }
+            }}/>
 
-            <CSSTransition in={this.state.isExpanded} timeout={600} unmountOnExit classNames={this.classNames} onEntered={e => e = e} onExited={ e => e = e}>
+            <CSSTransition in={this.state.isExpanded} timeout={600} unmountOnExit classNames={this.classNames}
+                           onEntered={e => {}} onExited={e => {}}>
 
                 <div className={style.contentArea}>
                     <div className={style.contentFrame}/>
