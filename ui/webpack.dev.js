@@ -6,5 +6,17 @@ module.exports = merge(common, {
     devtool: "source-map",
     output: {
         filename: "bundle-dev.js",
+    },
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: "ts-loader",
+                options: {
+                    configFile: "tsconfig.dev.json"
+                }
+            },
+        ]
     }
 });

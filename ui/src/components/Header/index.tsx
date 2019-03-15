@@ -1,15 +1,15 @@
 import React from "react"
 import style from "./Header.css"
 
-export default class Header extends React.Component {
+export default class Header extends React.Component<{}, {}> {
 
-    constructor(props) {
+    constructor(props: {}) {
         super(props);
 
         this.state = {}
     }
 
-    render() {
+    render(): JSX.Element {
         return <header className={style.header}>
             <div>MetaWebSample</div>
         </header>;

@@ -1,15 +1,21 @@
 import React from "react"
 import style from "./MainButton.css"
 
-export default class MainButton extends React.Component {
+interface MainButtonProps {
+    type: string;
+    text: String;
+    onClick: (event?: any) => void;
+}
 
-    constructor(props) {
+export default class MainButton extends React.Component<MainButtonProps , {}> {
+
+    constructor(props: MainButtonProps ) {
         super(props);
 
         this.state = {}
     }
 
-    render() {
+    render(): JSX.Element {
         return <button type={this.props.type} className={style.button} onClick={this.props.onClick}>
             {this.props.text}
         </button>;

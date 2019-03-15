@@ -3,9 +3,22 @@ import style from "./ButtonAccordion.css"
 import MainButton from "../MainButton/index"
 import {CSSTransition} from "react-transition-group"
 
-export default class ButtonAccordion extends React.Component {
+interface ButtonAccordionProps {
+    text: String,
+    onClick?: (e?: any) => void,
+    onOpening?: (e?: any) => void
+}
 
-    constructor(props) {
+interface ButtonAccordionState {
+    isExpanded: boolean
+}
+
+export default class ButtonAccordion extends React.Component<ButtonAccordionProps, ButtonAccordionState> {
+
+    classNames: any;
+    interval: number | null;
+
+    constructor(props: ButtonAccordionProps) {
         super(props);
 
         this.state = {
@@ -13,29 +26,29 @@ export default class ButtonAccordion extends React.Component {
         };
 
         this.classNames = {
-            appear: 'my-appear',
-            appearActive: 'my-active-appear',
-            enter: style.fieldAreaEnter,
+            // appear: 'my-appear',
+            // appearActive: 'my-active-appear',
+            // enter: style.fieldAreaEnter,
             enterActive: style.contentAreaEnterActive,
-            enterDone: style.contentAreaEnterDone,
-            exit: style.fieldAreaExit,
+            enterDone: style.contentAreaEnterActive,
+            // exit: style.fieldAreaExit,
             exitActive: style.contentAreaExitActive,
-            exitDone: style.contentAreaExitDone
+            exitDone: style.contentAreaExitActive
         };
 
         this.interval = null;
     }
 
-    toggle(e) {
+    toggle(event: any) {
         this.setState({
             isExpanded: !this.state.isExpanded
         });
 
         if (!this.state.isExpanded && this.props.onOpening) {
-            this.props.onOpening(e);
+            this.props.onOpening(event);
 
             this.interval = window.setInterval(() => {
-                this.props.onOpening(e);
+                this.props.onOpening!(event);
             }, 1000);
         } else if ((this.state.isExpanded && this.interval)) {
             window.clearInterval(this.interval);
@@ -48,15 +61,17 @@ export default class ButtonAccordion extends React.Component {
 
         return <div className={style.accordion}>
 
-            <MainButton type="button" text={this.props.text} onClick={e => {
-                this.toggle(e);
+            <MainButton type="button" text={this.props.text} onClick={(event: any) => {
+                this.toggle(event);
                 if ((this.props.onClick)) {
-                    this.props.onClick(e);
+                    this.props.onClick(event);
                 }
             }}/>
 
             <CSSTransition in={this.state.isExpanded} timeout={600} unmountOnExit classNames={this.classNames}
-                           onEntered={e => {}} onExited={e => {}}>
+                           onEntered={() => {
+                           }} onExited={() => {
+            }}>
 
                 <div className={style.contentArea}>
                     <div className={style.contentFrame}/>

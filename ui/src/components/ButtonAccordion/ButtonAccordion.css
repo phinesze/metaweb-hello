@@ -8,49 +8,45 @@
     --animation-exit: var(--duration) var(--function) 0ms 1 reverse forwards;
 
     --content-frame-border: 4px solid var(--main-color);
-
-    .contentArea {
-        position: relative;
-
-        .contentFrame {
-            position: absolute;
-            border-radius: 1rem;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: -4px;
-            top: -4px;
-            padding: 0;
-        }
-
-        .innerContent {
-        }
-    }
-
-    .contentAreaEnterActive, .contentAreaEnterDone {
-        animation: contentAreaAnimation var(--animation-enter);
-
-        .contentFrame {
-            animation: contentFrameAnimation var(--animation-enter);
-        }
-        .innerContent {
-            animation: innerContentAnimation var(--animation-enter);
-        }
-    }
-
-    .contentAreaExitActive, .contentAreaExitDone {
-        animation: contentAreaAnimation var(--animation-exit);
-
-        .contentFrame {
-            animation: contentFrameAnimation var(--animation-exit);
-            padding: 0;
-        }
-        .innerContent {
-            animation: innerContentAnimation var(--animation-exit);
-        }
-    }
-
 }
+
+.contentArea {
+    position: relative;
+}
+
+.contentFrame {
+    position: absolute;
+    border-radius: 1rem;
+    width: 100%;
+    height: 100%;
+    left: -4px;
+    top: -4px;
+    padding: 0;
+}
+
+.contentAreaEnterActive {
+    animation: contentAreaAnimation var(--animation-enter);
+}
+
+.contentAreaEnterActive .contentFrame {
+    animation: contentFrameAnimation var(--animation-enter);
+}
+.contentAreaEnterActive .innerContent {
+    animation: innerContentAnimation var(--animation-enter);
+}
+
+.contentAreaExitActive {
+    animation: contentAreaAnimation var(--animation-exit);
+}
+
+.contentAreaExitActive .contentFrame {
+    animation: contentFrameAnimation var(--animation-exit);
+    padding: 0;
+}
+.contentAreaExitActive .innerContent {
+    animation: innerContentAnimation var(--animation-exit);
+}
+
 
 @keyframes contentAreaAnimation {
     0% {
@@ -71,7 +67,7 @@
 @keyframes contentFrameAnimation {
     0% {
         max-width: 0;
-        border: 0px solid var(--main-color);
+        border: 0 solid var(--main-color);
         opacity: 0;
     }
     24.99% {
